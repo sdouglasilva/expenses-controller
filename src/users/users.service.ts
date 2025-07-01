@@ -10,6 +10,7 @@ export class UsersService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
   ){}
+
   async create(registerDto:RegisterDto): Promise<User> {
     const{name,email,password} = registerDto;
     const hashedPassword = await bcrypt.hash(password,10);
@@ -22,6 +23,13 @@ export class UsersService {
     await this.usersRepository.save(user);
     delete user.password;
     return user;
+  }
+  
+  async findByEmail(email:string): Promise<User | undefined>{
+    return this.usersRepository.findOne({
+      where:{email},
+      select:['id','name','email','password']
+    })
   }
 }
 
