@@ -16,6 +16,4 @@ export class Expense{
   )
   @JoinColumn({name:'userId'})
   user: User;
-  @Column({nullable:false})
-  userId: string;
 }
