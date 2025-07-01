@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entities';
@@ -24,12 +24,23 @@ export class UsersService {
     delete user.password;
     return user;
   }
-  
+
   async findByEmail(email:string): Promise<User | undefined>{
     return this.usersRepository.findOne({
       where:{email},
       select:['id','name','email','password']
     })
   }
+  async findById(id:string): Promise<User>{
+    const user = await this.usersRepository.findOneBy({id});
+    
+    if(!user){
+      throw new UnauthorizedException(`Usuário com id "${id}" - Não encontrado`)
+    }
+
+    delete user.password
+    return user 
+
+    }
 }
 
