@@ -4,7 +4,7 @@ import {ExtractJwt, Strategy} from 'passport-jwt';
 import { UserPayload } from "../interfaces/user-payload.interface";
 import { UsersService } from "@/users/users.service";
 import { ConfigService } from "@nestjs/config";
-import { User} from "@/users/entities/user.entities";
+import { User} from "@/users/entities/user.entity";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy){
@@ -19,7 +19,11 @@ export class JwtStrategy extends PassportStrategy(Strategy){
     })
   }
   async validate(payload: UserPayload): Promise<User>{
+    console.log('--- 1. JWT STRATEGY: validate() FOI ACIONADO ---');
+    console.log('Payload do token:', payload);
     const user = await this.usersService.findById(payload.sub);
+    console.log('--- 2. USUÁRIO ENCONTRADO PELA STRATEGY ---');
+    console.log(user);
     if (!user){
       throw new UnauthorizedException('Token inválido')
     }
