@@ -17,5 +17,4 @@ export class User{
 
   @OneToMany(()=> Expense,(expense)=> expense.user)
   expenses: Expense[]
-
 }
