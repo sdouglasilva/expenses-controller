@@ -83,7 +83,8 @@ Abra o arquivo `.env` e preencha as variáveis conforme a tabela abaixo.
 Com o Docker em execução, inicie o container do PostgreSQL.
 
 ```bash
-docker-compose up -d
+docker exec -it expenses-controller-db-1 psql -U postgres -d expenses_db
+
 ```
 
 **5. Executar a Aplicação**
