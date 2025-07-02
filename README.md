@@ -131,6 +131,14 @@ Use os seguintes dados para testar a API em ambiente local ou durante o desenvol
   "password": "senha456"
 }
 ```
+### Despesa
+```json
+{
+  "description": "Material de Escritório",
+  "date": "2025-07-10",
+  "value": 75
+}
+```
 
 **Nota sobre Autenticação:**
 Para acessar os endpoints de despesas, é necessário incluir o `accessToken` no cabeçalho `Authorization` da requisição.
