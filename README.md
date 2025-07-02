@@ -4,95 +4,118 @@
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
+# API de Controle de Despesas
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API REST para gerenciamento de despesas pessoais, desenvolvida com NestJS como parte de um case técnico. O projeto inclui um sistema de autenticação de usuários e controle de acesso baseado em posse.
 
-## Description
+## Principais Funcionalidades
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Autenticação de Usuário:** Sistema de cadastro e login com autenticação via JWT.
+- **CRUD de Despesas:** Operações completas de Criar, Ler, Atualizar e Deletar despesas.
+- **Controle de Acesso:** As rotas são protegidas para garantir que um usuário possa apenas acessar e manipular suas próprias despesas.
+- **Validação de Dados:** Validação de dados de entrada utilizando `class-validator`, incluindo regras de negócio customizadas (ex: a data da despesa não pode ser futura).
+- **Notificações por E-mail:** Envio de e-mail de confirmação ao usuário no momento do cadastro de uma nova despesa.
+- **Tratamento de Exceções:** Respostas de erro padronizadas para toda a aplicação através de um `HttpExceptionFilter` global.
+- **Testes Unitários:** Testes unitários para os serviços principais, garantindo a lógica de negócio e o tratamento de exceções.
 
-## Project setup
+## Tecnologias
 
-```bash
-$ npm install
-```
+- **Backend:** NestJS, TypeScript
+- **Banco de Dados:** PostgreSQL, TypeORM
+- **Autenticação:** Passport.js (Estratégia JWT)
+- **Validação:** class-validator
+- **E-mail:** Nodemailer
+- **Testes:** Jest
+- **Ambiente:** Docker, Docker Compose
 
-## Compile and run the project
+## Configuração e Execução
 
-```bash
-# development
-$ npm run start
+Para configurar e executar a aplicação localmente, siga os passos abaixo.
 
-# watch mode
-$ npm run start:dev
+### Pré-requisitos
 
-# production mode
-$ npm run start:prod
-```
+- Node.js (versão 18 ou superior)
+- Docker Desktop
+- Um cliente de API (Postman, Insomnia, Thunder Client, etc.)
 
-## Run tests
+### Instruções
+
+**1. Clonar o Repositório**
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone [https://github.com/seu-usuario/expenses-controller.git](https://github.com/seu-usuario/expenses-controller.git)
+cd expenses-controller
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+**2. Instalar Dependências**
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+**3. Configurar Variáveis de Ambiente**
 
-## Resources
+O projeto requer um arquivo `.env` para as configurações. Copie o arquivo de exemplo para criar o seu ou utlize as informações principais de email para agilizar seu trabalho no `.env.example`
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+cp .env.example .env
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Abra o arquivo `.env` e preencha as variáveis conforme a tabela abaixo.
 
-## Support
+| Variável         | Descrição                                               | Exemplo                                |
+| :--- | :--- | :--- |
+| `DB_HOST`        | Host do banco de dados (mantenha `localhost` com Docker). | `localhost`                            |
+| `DB_PORT`        | Porta do banco de dados.                                | `5432`                                 |
+| `DB_USERNAME`    | Usuário do banco de dados.                              | `docker`                               |
+| `DB_PASSWORD`    | Senha do banco de dados.                                | `docker`                               |
+| `DB_DATABASE`    | Nome do banco de dados.                                 | `expenses_db`                          |
+| `JWT_SECRET`     | Chave secreta para assinar os tokens JWT.               | `UMA_CHAVE_FORTE_E_SECRETA`            |
+| `JWT_EXPIRES_IN` | Tempo de expiração do token.                            | `3600s`                                |
+| `MAIL_HOST`      | Host do serviço de e-mail (ex: Mailtrap Sandbox).       | `sandbox.smtp.mailtrap.io`             |
+| `MAIL_PORT`      | Porta do serviço de e-mail.                             | `2525`                                 |
+| `MAIL_USER`      | Usuário do serviço de e-mail.                           | `seu-usuario-mailtrap`                 |
+| `MAIL_PASS`      | Senha do serviço de e-mail.                             | `sua-senha-mailtrap`                   |
+| `MAIL_FROM`      | E-mail remetente.                                       | `"Expenses App" <from@example.com>`    |
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**4. Iniciar o Banco de Dados**
 
-## Stay in touch
+Com o Docker em execução, inicie o container do PostgreSQL.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+docker-compose up -d
+```
 
-## License
+**5. Executar a Aplicação**
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Inicie a API em modo de desenvolvimento.
+
+```bash
+npm run start:dev
+```
+
+A aplicação estará disponível em `http://localhost:3000`.
+
+## Testando os Endpoints
+
+Utilize um cliente de API para interagir com os endpoints.
+
+- `POST /auth/register` - Cria um novo usuário.
+- `POST /auth/login` - Autentica um usuário e retorna um `accessToken`.
+- `GET /expenses` - Lista as despesas do usuário autenticado.
+- `POST /expenses` - Cria uma nova despesa.
+- `GET /expenses/:id` - Busca uma despesa específica.
+- `PATCH /expenses/:id` - Atualiza uma despesa.
+- `DELETE /expenses/:id` - Remove uma despesa.
+
+**Nota sobre Autenticação:**
+Para acessar os endpoints de despesas, é necessário incluir o `accessToken` no cabeçalho `Authorization` da requisição.
+
+**Formato:** `Authorization: Bearer seu_token_aqui`
+
+## Executando os Testes
+
+Para rodar os testes unitários, utilize o seguinte comando:
+
+```bash
+npm run test
