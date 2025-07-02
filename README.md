@@ -43,7 +43,7 @@ Para configurar e executar a aplicação localmente, siga os passos abaixo.
 **1. Clonar o Repositório**
 
 ```bash
-git clone [https://github.com/seu-usuario/expenses-controller.git](https://github.com/seu-usuario/expenses-controller.git)
+git clone `https://github.com/sdouglasilva/expenses-controller.git`
 cd expenses-controller
 ```
 
@@ -61,14 +61,14 @@ O projeto requer um arquivo `.env` para as configurações. Copie o arquivo de e
 cp .env.example .env
 ```
 
-Abra o arquivo `.env` e preencha as variáveis conforme a tabela abaixo.
+Abra o arquivo `.env` e preencha as variáveis conforme a tabela abaixo. - Para variáveis de email, utilize as de `.env.example`, logo irei remove-las.
 
 | Variável         | Descrição                                               | Exemplo                                |
 | :--- | :--- | :--- |
 | `DB_HOST`        | Host do banco de dados (mantenha `localhost` com Docker). | `localhost`                            |
 | `DB_PORT`        | Porta do banco de dados.                                | `5432`                                 |
-| `DB_USERNAME`    | Usuário do banco de dados.                              | `docker`                               |
-| `DB_PASSWORD`    | Senha do banco de dados.                                | `docker`                               |
+| `DB_USERNAME`    | Usuário do banco de dados.                              | `postgres`                               |
+| `DB_PASSWORD`    | Senha do banco de dados.                                | `0000`                               |
 | `DB_DATABASE`    | Nome do banco de dados.                                 | `expenses_db`                          |
 | `JWT_SECRET`     | Chave secreta para assinar os tokens JWT.               | `UMA_CHAVE_FORTE_E_SECRETA`            |
 | `JWT_EXPIRES_IN` | Tempo de expiração do token.                            | `3600s`                                |
