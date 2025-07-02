@@ -83,7 +83,7 @@ Abra o arquivo `.env` e preencha as variáveis conforme a tabela abaixo.
 Com o Docker em execução, inicie o container do PostgreSQL.
 
 ```bash
-docker exec -it expenses-controller-db-1 psql -U postgres -d expenses_db
+docker run -d --name expenses-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=0000 -e POSTGRES_DB=expenses_db -p 5432:5432 -v pgdata:/var/lib/postgresql/data postgres:15
 
 ```
 
