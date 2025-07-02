@@ -11,6 +11,9 @@ export class Expense{
 
   @Column({type:'decimal', precision:10, scale:2})
   value:number
+  
+  @Column({ length: 191 })
+  description: string;
 
   @ManyToOne(()=>User, (user)=> user.expenses,{onDelete:'CASCADE'}
   )
