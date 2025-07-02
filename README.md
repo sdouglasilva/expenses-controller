@@ -109,6 +109,29 @@ Utilize um cliente de API para interagir com os endpoints.
 - `PATCH /expenses/:id` - Atualiza uma despesa.
 - `DELETE /expenses/:id` - Remove uma despesa.
 
+
+  ##  Usuários de Teste (Atores)
+
+Use os seguintes dados para testar a API em ambiente local ou durante o desenvolvimento:
+
+### João da Silva
+
+```json
+{
+  "name": "Joao da Silva",
+  "email": "joao@teste.com",
+  "password": "senha123"
+}
+```
+### Maria Souza
+```json
+{
+  "name": "Maria Souza",
+  "email": "maria@teste.com",
+  "password": "senha456"
+}
+```
+
 **Nota sobre Autenticação:**
 Para acessar os endpoints de despesas, é necessário incluir o `accessToken` no cabeçalho `Authorization` da requisição.
 
