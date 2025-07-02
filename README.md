@@ -43,7 +43,7 @@ Para configurar e executar a aplicação localmente, siga os passos abaixo.
 **1. Clonar o Repositório**
 
 ```bash
-git clone `https://github.com/sdouglasilva/expenses-controller.git`
+git clone `https://github.com/sdouglasilva/expenses-controller-api.git`
 cd expenses-controller
 ```
 
